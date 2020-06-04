@@ -7,7 +7,8 @@ namespace nortoncommander
     {
         public event Action OnEnterKey;
         
-        public override bool ProcessKey(KeyEvent kb) {
+        public override bool ProcessKey(KeyEvent kb) 
+        {
             if (kb.Key == Key.Enter) {
                 OnEnterKey?.Invoke();
                 return true;

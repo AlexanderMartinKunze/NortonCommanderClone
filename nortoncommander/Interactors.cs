@@ -10,7 +10,8 @@ namespace nortoncommander
         private string _rightPath;
         
         
-        public IEnumerable<NCFileInfo> Start() {
+        public IEnumerable<NCFileInfo> Start() 
+        {
             var currentDirectory = FileSystemProvider.GetCurrentDirectory();
             _leftFiles = FileSystemProvider.CreateFileList(currentDirectory);
             _rightFiles = _leftFiles;
@@ -19,13 +20,15 @@ namespace nortoncommander
             return _leftFiles;
         }
 
-        public IEnumerable<NCFileInfo> ChangeDirectoryLeft(in int selectedIndex) {
+        public IEnumerable<NCFileInfo> ChangeDirectoryLeft(in int selectedIndex)
+        {
             _leftPath = FileSystemProvider.ChangeDirectory(selectedIndex, _leftPath, _leftFiles);
             _leftFiles = FileSystemProvider.CreateFileList(_leftPath);
             return _leftFiles;
         }
         
-        public IEnumerable<NCFileInfo> ChangeDirectoryRight(in int selectedIndex) {
+        public IEnumerable<NCFileInfo> ChangeDirectoryRight(in int selectedIndex)
+        {
             _rightPath = FileSystemProvider.ChangeDirectory(selectedIndex, _rightPath, _rightFiles);
             _rightFiles = FileSystemProvider.CreateFileList(_rightPath);
             return _rightFiles;

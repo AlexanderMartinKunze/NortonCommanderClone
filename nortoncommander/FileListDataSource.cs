@@ -12,7 +12,8 @@ namespace nortoncommander
             _files = files.ToList();
         }
 
-        public void Render(ListView container, ConsoleDriver driver, bool selected, int item, int col, int line, int width) {
+        public void Render(ListView container, ConsoleDriver driver, bool selected, int item, int col, int line, int width)
+        {
             if (selected) {
                 driver.SetAttribute (container.ColorScheme.Focus);
             }
@@ -28,13 +29,9 @@ namespace nortoncommander
             driver.SetAttribute (container.ColorScheme.Normal);   
         }
 
-        public bool IsMarked(int item) {
-            return _files[item].IsSelected;
-        }
+        public bool IsMarked(int item) => _files[item].IsSelected;
 
-        public void SetMark(int item, bool value) {
-            _files[item].IsSelected = value;
-        }
+        public void SetMark(int item, bool value) => _files[item].IsSelected = value;
 
         public int Count => _files.Count;
 
