@@ -1,0 +1,68 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "nortoncommander/1.0.0": {
+        "dependencies": {
+          "Terminal.Gui": "0.65.0"
+        },
+        "runtime": {
+          "nortoncommander.dll": {}
+        }
+      },
+      "NStack.Core/0.11.0": {
+        "runtime": {
+          "lib/netstandard1.5/NStack.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "System.ValueTuple/4.4.0": {},
+      "Terminal.Gui/0.65.0": {
+        "dependencies": {
+          "NStack.Core": "0.11.0",
+          "System.ValueTuple": "4.4.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Terminal.Gui.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "nortoncommander/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "NStack.Core/0.11.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LQrIt/ZS1+CXAXDN/1nEZuoyOEyrAqQVD9r5sWce22JkwMOHc3NUq1FmBkKdCjZzWJcooupMPvc8IQuQqADSRg==",
+      "path": "nstack.core/0.11.0",
+      "hashPath": "nstack.core.0.11.0.nupkg.sha512"
+    },
+    "System.ValueTuple/4.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BahUww/+mdP4ARCAh2RQhQTg13wYLVrBb9SYVgW8ZlrwjraGCXHGjo0oIiUfZ34LUZkMMR+RAzR7dEY4S1HeQQ==",
+      "path": "system.valuetuple/4.4.0",
+      "hashPath": "system.valuetuple.4.4.0.nupkg.sha512"
+    },
+    "Terminal.Gui/0.65.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8n5hWT2c/gmVK59oFqdIXh9RdIV3JdMGmS7AhiZND6iIoxO7qIZWNmNZ4eR2FNRENIV5erF6D12W4sIr8rTj1g==",
+      "path": "terminal.gui/0.65.0",
+      "hashPath": "terminal.gui.0.65.0.nupkg.sha512"
+    }
+  }
+}
