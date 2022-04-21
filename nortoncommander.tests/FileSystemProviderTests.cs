@@ -8,7 +8,8 @@ namespace nortoncommander.tests
     public class FileSystemProviderTests
     {
         [Test]
-        public void Files_and_directories_are_read_correct() {
+        public void Files_and_directories_are_read_correct() 
+        {
             var result = FileSystemProvider.CreateFileList("testdata");
             
             Assert.That(result.Count(), Is.EqualTo(4));
@@ -22,7 +23,8 @@ namespace nortoncommander.tests
         }
 
         [Test]
-        public void Can_change_directory_one_level_down() {
+        public void Can_change_directory_one_level_down() 
+        {
             var path = FileSystemProvider.ChangeDirectory(0, "testdata", 
                 new[]{new NCFileInfo {
                     Name = "subDir",
@@ -32,7 +34,8 @@ namespace nortoncommander.tests
         }
 
         [Test]
-        public void Can_change_directory_one_level_up() {
+        public void Can_change_directory_one_level_up() 
+        {
             var path = FileSystemProvider.ChangeDirectory(0, "testdata", 
                 new[]{new NCFileInfo {
                     Name = "..",

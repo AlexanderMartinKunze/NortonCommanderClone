@@ -14,13 +14,8 @@ namespace nortoncommander
 
         public void Render(ListView container, ConsoleDriver driver, bool selected, int item, int col, int line, int width)
         {
-            if (selected) {
-                driver.SetAttribute (container.ColorScheme.Focus);
-            }
-            else {
-                driver.SetAttribute (container.ColorScheme.Normal);
-            }
-            
+            driver.SetAttribute(selected ? container.ColorScheme.Focus : container.ColorScheme.Normal);
+
             container.Move(col, line);
             driver.AddStr(Format(_files[item], width));
             
@@ -40,24 +35,24 @@ namespace nortoncommander
             //          1         2         3
             //   <DIR>  12345 KB  04.02.2020 11:11
             //   12345 KB  04.02.2020 11:11
-            var widthForFilename = width - 28 - 2;
+            int widthForFilename = width - 28 - 2;
             if (ncFileInfo.IsDirectory) {
                 widthForFilename = width - 35 - 2;
             }
 
             if (widthForFilename < 10) {
                 if (ncFileInfo.IsDirectory) {
-                    var l = ncFileInfo.Name.Length < width - 9 ? ncFileInfo.Name.Length : width - 9;
-                    var s = ncFileInfo.Name.Substring(0, l);
+                    int l = ncFileInfo.Name.Length < width - 9 ? ncFileInfo.Name.Length : width - 9;
+                    string s = ncFileInfo.Name.Substring(0, l);
                     return " " + (s + " <DIR>").PadRight(width - 1);
                 }
 
-                var length = ncFileInfo.Name.Length < width - 3 ? ncFileInfo.Name.Length : width - 3;
-                var substring = ncFileInfo.Name.Substring(0, length);
+                int length = ncFileInfo.Name.Length < width - 3 ? ncFileInfo.Name.Length : width - 3;
+                string substring = ncFileInfo.Name.Substring(0, length);
                 return " " + substring.PadRight(width - 1);
             }
             
-            var filename = ncFileInfo.Name;
+            string filename = ncFileInfo.Name;
             if (filename.Length > widthForFilename) {
                 var startIndex = filename.Length - widthForFilename + 3;
                 filename = "..." + filename.Substring(startIndex, widthForFilename - 3);
@@ -66,7 +61,7 @@ namespace nortoncommander
                 filename = filename.PadRight(widthForFilename);
             }
             
-            var result = " " + filename;
+            string result = " " + filename;
 
             result = result.PadRight(widthForFilename);
             if (ncFileInfo.IsDirectory) {

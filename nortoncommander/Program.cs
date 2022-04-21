@@ -1,4 +1,5 @@
-﻿using Terminal.Gui;
+﻿using System.Collections.Generic;
+using Terminal.Gui;
 
 namespace nortoncommander
 {
@@ -6,25 +7,25 @@ namespace nortoncommander
     {
         static void Main(string[] args)
         {
-            var ui = new Ui();
-            var interactors = new Interactors();
+            Ui ui = new Ui();
+            Interactors interactors = new Interactors();
 
             void Start() 
             {
-                var files = interactors.Start();
+                IEnumerable<NCFileInfo> files = interactors.Start();
                 ui.UpdateLeftList(files);
                 ui.UpdateRightList(files);
             }
 
             ui.OnLeftFile += selectedIndex => 
             {
-                var files = interactors.ChangeDirectoryLeft(selectedIndex);
+                IEnumerable<NCFileInfo> files = interactors.ChangeDirectoryLeft(selectedIndex);
                 ui.UpdateLeftList(files);
             };
 
             ui.OnRightFile += selectedIndex => 
             {
-                var files = interactors.ChangeDirectoryRight(selectedIndex);
+                IEnumerable<NCFileInfo> files = interactors.ChangeDirectoryRight(selectedIndex);
                 ui.UpdateRightList(files);
             };
 

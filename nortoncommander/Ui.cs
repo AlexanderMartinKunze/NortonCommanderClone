@@ -30,7 +30,7 @@ namespace nortoncommander
 
         private void CreateView(Toplevel top)
         {
-            var leftWin = new Window("Links")
+            Window leftWin = new Window("Links")
             {
                 X = 0,
                 Y = 1, // one line for the menu
@@ -39,7 +39,7 @@ namespace nortoncommander
             };
             top.Add(leftWin);
 
-            var rightWin = new Window("Rechts")
+            Window rightWin = new Window("Rechts")
             {
                 X = Pos.Right(leftWin),
                 Y = 1, // one line for the menu
@@ -48,7 +48,7 @@ namespace nortoncommander
             };
             top.Add(rightWin);
 
-            var menu = new MenuBar(new[]
+            MenuBar menu = new MenuBar(new[]
             {
                 new MenuBarItem("_File", new[]
                 {

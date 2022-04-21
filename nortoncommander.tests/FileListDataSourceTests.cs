@@ -5,8 +5,9 @@ namespace nortoncommander.tests
     public class FileListDataSourceTests
     {
         [Test]
-        public void File_with_enough_width() {
-            var result = FileListDataSource.Format(new NCFileInfo {
+        public void File_with_enough_width() 
+        {
+            string result = FileListDataSource.Format(new NCFileInfo {
                 Name = "1234567890.txt",
                 IsDirectory = false
             }, 50);
@@ -14,8 +15,9 @@ namespace nortoncommander.tests
         }
 
         [Test]
-        public void File_with_not_enough_width() {
-            var result = FileListDataSource.Format(new NCFileInfo {
+        public void File_with_not_enough_width() 
+        {
+            string result = FileListDataSource.Format(new NCFileInfo {
                 Name = "1234567890.txt",
                 IsDirectory = false
             }, 40);
@@ -23,8 +25,9 @@ namespace nortoncommander.tests
         }
 
         [Test]
-        public void File_with_very_small_width() {
-            var result = FileListDataSource.Format(new NCFileInfo {
+        public void File_with_very_small_width()
+        {
+            string result = FileListDataSource.Format(new NCFileInfo {
                 Name = "1234567890.txt",
                 IsDirectory = false
             }, 20);
@@ -32,8 +35,9 @@ namespace nortoncommander.tests
         }
 
         [Test]
-        public void Directory_with_enough_width() {
-            var result = FileListDataSource.Format(new NCFileInfo {
+        public void Directory_with_enough_width()
+        {
+            string result = FileListDataSource.Format(new NCFileInfo {
                 Name = "1234567890",
                 IsDirectory = true
             }, 50);
@@ -41,8 +45,9 @@ namespace nortoncommander.tests
         }
 
         [Test]
-        public void Directory_with_not_enough_width() {
-            var result = FileListDataSource.Format(new NCFileInfo {
+        public void Directory_with_not_enough_width() 
+        {
+            string result = FileListDataSource.Format(new NCFileInfo {
                 Name = "1234567890",
                 IsDirectory = true
             }, 47);
@@ -50,8 +55,9 @@ namespace nortoncommander.tests
         }
 
         [Test]
-        public void Directory_with_very_small_width() {
-            var result = FileListDataSource.Format(new NCFileInfo {
+        public void Directory_with_very_small_width() 
+        {
+            string result = FileListDataSource.Format(new NCFileInfo {
                 Name = "1234567890",
                 IsDirectory = true
             }, 20);

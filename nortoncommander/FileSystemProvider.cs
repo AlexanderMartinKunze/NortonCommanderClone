@@ -4,13 +4,20 @@ using System.Linq;
 
 namespace nortoncommander
 {
-    public class FileSystemProvider
+    public static class FileSystemProvider
     {
         public static string GetCurrentDirectory() => Directory.GetCurrentDirectory();
 
         public static IEnumerable<NCFileInfo> CreateFileList(string path) {
-            var files = Directory.EnumerateFileSystemEntries(path, "", SearchOption.TopDirectoryOnly);
-            var result = files.Select(file => new NCFileInfo {Name = NormalizedName(file), IsDirectory = IsDirectory(file), IsSelected = false}).ToList();
+            IEnumerable<string> files = Directory.EnumerateFileSystemEntries(path, "", SearchOption.TopDirectoryOnly);
+            
+            List<NCFileInfo> result = files.Select(file => new NCFileInfo
+                {
+                    Name = NormalizedName(file),
+                    IsDirectory = IsDirectory(file),
+                    IsSelected = false
+                })
+                .ToList();
 
             result = Sort(result);
 
@@ -33,7 +40,10 @@ namespace nortoncommander
             return (File.GetAttributes(file) & FileAttributes.Directory) == FileAttributes.Directory;
         }
 
-        private static List<NCFileInfo> Sort(List<NCFileInfo> result) => result.OrderBy(f => !f.IsDirectory).ThenBy(f => f.Name).ToList();
+        private static List<NCFileInfo> Sort(List<NCFileInfo> result) => result
+            .OrderBy(f => !f.IsDirectory)
+            .ThenBy(f => f.Name)
+            .ToList();
 
         private static bool IsRootPath(string path) => new DirectoryInfo(path).Root.Name == path;
 
@@ -41,12 +51,12 @@ namespace nortoncommander
                                              string path,
                                              IEnumerable<NCFileInfo> files)
         {
-            var selectedFile = files.ElementAt(selectedIndex);
+            NCFileInfo selectedFile = files.ElementAt(selectedIndex);
             if (!selectedFile.IsDirectory)
             {
                 return path;
             }
-            var newPath = CombinedPath(path, selectedFile.Name);
+            string newPath = CombinedPath(path, selectedFile.Name);
             return newPath;
         }
 
@@ -54,7 +64,7 @@ namespace nortoncommander
             string currentPath,
             string path) 
         {
-            var newPath = Path.Combine(currentPath, path);
+            string newPath = Path.Combine(currentPath, path);
             return new FileInfo(newPath).FullName;
         }
     }
