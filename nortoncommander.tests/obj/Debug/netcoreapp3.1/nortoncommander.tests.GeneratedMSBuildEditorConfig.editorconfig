@@ -1,0 +1,3 @@
+is_global = true
+build_property.RootNamespace = nortoncommander.tests
+build_property.ProjectDir = C:\workspace\NortonCommanderClone\nortoncommander.tests\
